@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Conta - configurações</title>
+<style>
+body {
+	background-color: rgb(92, 31, 150);
+	color: white;
+	font: normal 16pt Arial;
+}
+
+div {
+	background-color: white;
+	color: black;
+	width: 500px;
+	margin: auto;
+	padding: 25px;
+	border-radius: 10px;
+}
+
+h1 {
+	text-align: center;
+}
+
+input#botao {
+	padding: 10px;
+	border-radius: 5px;
+	border: rgb(102, 99, 99);
+	font-size: 14pt;
+}
+
+input[type="text"], input[type="password"],input[type="date"] {
+	padding: 4px;
+	border-radius: 5px;
+	border: solid 1px gray;
+}
+.erro{
+	color:black;
+	font-size:12pt;
+	width: 400px;
+	height: 25px;
+	padding:10px;
+	
+}
+</style>
+</head>
+<body>
+	<!-- alterar -->
+	<h1>Alterar Dados</h1>
+	<div id="dados">
+		<form action="/alterar" method="post" th:object="${usuario}">
+			<p>
+				<input type="hidden" id="id" name="id" th:field="*{id}">
+			</p>
+			<p>
+				<div class="erro" th:if="${#fields.hasErrors('nome')}" > 
+					<p class="erro" th:errors="*{nome}"></p>
+				</div>
+				Nome: <input type="text" id="nome" th:field="*{nome}">
+			</p>
+			<p>
+				<div class="erro" th:if="${#fields.hasErrors('email')}" >
+					<label class="erro" th:errors="*{email}"></label>
+				</div>
+				Email: <input type="text" id="email" th:field="*{email}">
+			</p>
+			<p>
+				<div class="erro" th:if="${#fields.hasErrors('dataNascimento')}" >
+					<label class="erro" th:errors="*{dataNascimento}"></label>
+				</div>
+				Data de Nascimento: <input type="date" name="dataNascimento"
+					id="dataNascimento" th:field="*{dataNascimento}">
+			</p>
+			<p>
+				<div class="erro" th:if="${#fields.hasErrors('senha')}">
+					<label class="erro" th:errors="*{senha}"></label>
+				</div>
+				Senha: <input type="password" name="senha" id="senha" th:field="*{senha}" value="*{senha}">
+			</p>
+			<p>
+				<input type="submit" id="botao" value="Alterar">
+			</p>
+		</form>
+		
+	</div>
+</body>
+</html>

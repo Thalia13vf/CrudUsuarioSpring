@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Login</title>
+<style>
+body {
+	background-color: rgb(92, 31, 150);
+	color: white;
+	font: normal 16pt Arial;
+}
+
+div {
+	background-color: white;
+	color: black;
+	width: 500px;
+	margin: auto;
+	padding: 25px;
+	border-radius: 10px;
+}
+
+h1 {
+	text-align: center;
+}
+
+input#botao {
+	padding: 10px;
+	border-radius: 5px;
+	border: rgb(102, 99, 99);
+	font-size: 14pt;
+}
+
+input[type="text"], input[type="password"],input[type="date"] {
+	padding: 4px;
+	border-radius: 5px;
+	border: solid 1px gray;
+}
+.erro{
+	color:black;
+	font-size:12pt;
+	width: 400px;
+	height: 25px;
+	padding:10px;
+	
+}
+</style>
+</head>
+<body>
+	<div>
+	<h1>Login</h1>
+	<form action="/login" method="post">
+		<p>
+			Email: <input type="text" id="email" name="email">
+		</p>
+
+		<p>
+			Senha: <input type="password" name="senha" id="senha">
+		</p>
+		<input id="botao" type="submit" value="Login"/>
+		<div th:if="${param.error}">
+			Não foi possível fazer o login
+		</div>
+	</form>
+	<p>Não possui conta, cadastre-se <a href="/registrar">aqui</a></p>
+	</div>
+</body>
+</html>
